@@ -31,7 +31,8 @@ var hosts = [
 	'sf.wikia.com',
 	'zombie.wikia.com',
 	'wreckitralph.wikia.com',
-	'texas-chainsaw-massacre.wikia.com'
+	'texas-chainsaw-massacre.wikia.com',
+	'travel.wikia.com'
 ],
 users = [
 	'Sannse',
