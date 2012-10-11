@@ -32,7 +32,15 @@ var hosts = [
 	'zombie.wikia.com',
 	'wreckitralph.wikia.com',
 	'texas-chainsaw-massacre.wikia.com',
-	'travel.wikia.com'
+	'travel.wikia.com',
+	'gryplanszowe.wikia.com',
+	'thorgal-komiks.wikia.com',
+	'minimalizm.wikia.com',
+	'pl.wegetarianizm.wikia.com',
+	'foosball.wikia.com',
+	'pl.volkswagen.wikia.com',
+	'firefly.wikia.com',
+	'pl.saab.wikia.com',
 ],
 users = [
 	'Sannse',
