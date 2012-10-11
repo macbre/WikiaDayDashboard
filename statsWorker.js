@@ -38,6 +38,8 @@ var hosts = [
 	'whiskey.wikia.com',
 	'wreckitralph.wikia.com',
 	'zombie.wikia.com',
+	'pl.rap.wikia.com',
+	'pl.gopro.wikia.com'
 ],
 users = [
 	'Sannse',
@@ -184,7 +186,8 @@ users = [
 	'Piotr Gabryjeluk',
 	'TheBlueRogue',
 	'Laurenwoodman',
-	'Mira84'
+	'Mira84',
+	'Artur.sitarski'
 ];
 
 var DAY = '2012-10-11';
@@ -198,6 +201,7 @@ var fs = require('fs'),
 
 var NS_MAIN = 0,
 	NS_FILE = 6,
+	NS_CATEGORY = 14,
 	NS_TEMPLATE = 10;
 
 var stats = {
@@ -229,6 +233,7 @@ hosts.forEach(function(host) {
 				switch(entry.ns) {
 					case NS_MAIN:
 					case NS_TEMPLATE:
+					case NS_CATEGORY:
 						stats.edits++;
 						stats.diff += diff;
 						break;
