@@ -1,7 +1,7 @@
 (function($) {
 
 	var WIDTH = 300,
-		DELAY = 30;
+		DELAY = 10;
 
 	var nodes = $('dl');
 

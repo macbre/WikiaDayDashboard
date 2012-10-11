@@ -5,7 +5,7 @@ var hosts = [
 	'poznan.wikia.com',
 	'muppet.wikia.com',
 	'sexandthecity.wikia.com',
-	'swiatdysku.wika.com',
+	'swiatdysku.wikia.com',
 	'pl.gdanskw.wikia.com',
 	'pl.saab.wikia.com',
 	'pl.enjoyszkola.wikia.com',
@@ -191,7 +191,8 @@ var fs = require('fs'),
 	FILE = 'stats.json';
 
 var NS_MAIN = 0,
-	NS_FILE = 6;
+	NS_FILE = 6,
+	NS_TEMPLATE = 10;
 
 var stats = {
 	edits: 0,
@@ -221,6 +222,7 @@ hosts.forEach(function(host) {
 			if (users.indexOf(entry.user) > -1) {
 				switch(entry.ns) {
 					case NS_MAIN:
+					case NS_TEMPLATE:
 						stats.edits++;
 						stats.diff += diff;
 						break;
