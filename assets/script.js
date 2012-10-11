@@ -33,7 +33,7 @@
 	}
 
 	fetchStats();
-	setTimeout(fetchStats, DELAY * 1000);
+	setInterval(fetchStats, DELAY * 1000);
 
 	//update({"edits":126,"diff":18775,"uploads":70}); // debug
 
