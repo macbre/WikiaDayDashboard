@@ -1,5 +1,5 @@
 body {
-	background: #fff url(WikiaDayBadge.png) no-repeat 95% 95%;
+	background: #fff url(Wikia-red.png) no-repeat 95% 95%;
 	border: 0;
 	font-family: "Lucida Grande","Lucida Sans Unicode",Verdana,Arial,sans-serif;
 	height: 600px;
@@ -39,7 +39,7 @@ dt, dd {
 
 dt {
 	float: left;
-	font-size: 1em;
+	font-size: 0.9em;
 	letter-spacing: -1px;
 }
 
