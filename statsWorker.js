@@ -10,6 +10,9 @@ users = [
 	'TOR',
 	'Toughpigs'
 ];
+
+var DAY = '2012-10-11';
+
 // CONFIG ENDS HERE
 
 var fs = require('fs'),
@@ -38,7 +41,12 @@ hosts.forEach(function(host) {
 	client.getRecentChanges(false, function(data, next) {
 		data.forEach(function(entry) {
 			var diff = entry.newlen - entry.oldlen,
-				ns = entry.ns;
+				ns = entry.ns,
+				timestamp = entry.timestamp.substr(0, 10);
+
+			if (timestamp !== DAY) {
+				return;
+			}
 
 			if (users.indexOf(entry.user) > -1) {
 				switch(entry.ns) {
