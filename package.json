@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/macbre/WikiaDayDashboard",
   "dependencies": {
+    "csv-string": "^2.2.2",
     "nodemw": "^0.3.16"
   }
 }

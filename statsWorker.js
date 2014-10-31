@@ -75,9 +75,11 @@ var DAY = '2014-10-31';
 
 // CONFIG ENDS HERE
 
-var fs = require('fs'),
+var csv = require('csv-string'),
+	fs = require('fs'),
 	bot = require('nodemw'),
-	FILE = 'stats.json';
+	CSV_FILE = 'stats.csv',
+	JSON_FILE = 'stats.json';
 
 var NS_MAIN = 0,
 	NS_FILE = 6,
@@ -142,10 +144,29 @@ hosts.forEach(function(host) {
 			}
 		});
 
+		// saving as JSON
 		var res = JSON.stringify(stats);
-		fs.writeFileSync(FILE, res);
+		fs.writeFileSync(JSON_FILE, res);
 
 		console.log('> Stats for ' + host + ' saved (' + rows + ' rows analyzed)');
-		console.log(res);
+		//console.log(res);
+
+		// saving as CSV
+		res = [
+			['Name', 'Edits', 'Diff', 'Uploads'],
+		];
+
+		Object.keys(stats.edits_per_user).forEach(function(user_name) {
+			var entry = stats.edits_per_user[user_name];
+
+			res.push([
+				user_name,
+				entry.edits,
+				entry.diff,
+				entry.uploads,
+			]);
+		});
+
+		fs.writeFileSync(CSV_FILE, csv.stringify(res));
 	});
 });
