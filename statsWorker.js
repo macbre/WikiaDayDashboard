@@ -43,32 +43,32 @@ users = [
 	"TOR",
 	"Talala",
 	"Wladekb",
-	"aquila10",
-	"bartko",
-	"bognix",
-	"boom100",
-	"cieslak.jakub",
-	"dianafa",
-	"dyktus",
-	"glass butterfly",
-	"idradm",
-	"jakubolek",
-	"kvas damian",
-	"ludwik.kazmierczak",
+	"Aquila10",
+	"Bartko",
+	"Bognix",
+	"Boom100",
+	"Cieslak.jakub",
+	"Dianafa",
+	"Dyktus",
+	"Glass butterfly",
+	"Idradm",
+	"Jakubolek",
+	"Kvas damian",
+	"Ludwik.kazmierczak",
 	"Macbre",
-	"moczul",
-	"plagia",
-	"pushkin1799",
-	"rafalkalinski",
-	"robert.jerzu",
-	"ryba777",
-	"shareif",
-	"sqreek",
-	"suchy wikia",
-	"thealistra",
-	"troophel",
-	"ukaka1",
-	"warkot",
+	"Moczul",
+	"Plagia",
+	"Pushkin1799",
+	"Rafalkalinski",
+	"Robert.jerzu",
+	"Ryba777",
+	"Shareif",
+	"Sqreek",
+	"Suchy wikia",
+	"Thealistra",
+	"Troophel",
+	"Ukaka1",
+	"Warkot",
 ];
 
 var DAY = '2014-10-31';
@@ -88,7 +88,7 @@ var stats = {
 	edits: 0,
 	diff: 0,
 	uploads: 0,
-	edits_per_user: []
+	edits_per_user: {}
 };
 
 hosts.forEach(function(host) {
@@ -100,6 +100,8 @@ hosts.forEach(function(host) {
 	console.log('> Generating stats for ' + host);
 
 	client.getRecentChanges(false, function(data, next) {
+		var rows = 0;
+
 		data.forEach(function(entry) {
 			var diff = entry.newlen - entry.oldlen,
 				ns = entry.ns,
@@ -110,25 +112,40 @@ hosts.forEach(function(host) {
 			}
 
 			if (users.indexOf(entry.user) > -1) {
+				if (typeof stats.edits_per_user[entry.user] === 'undefined') {
+					stats.edits_per_user[entry.user] = {
+						edits: 0,
+						diff: 0,
+						uploads: 0,
+					};
+				}
+
 				switch(entry.ns) {
 					case NS_MAIN:
 					case NS_TEMPLATE:
 					case NS_CATEGORY:
 						stats.edits++;
 						stats.diff += diff;
+
+						stats.edits_per_user[entry.user].edits++;
+						stats.edits_per_user[entry.user].diff += diff;
 						break;
 
 					case NS_FILE:
 						stats.uploads++;
+
+						stats.edits_per_user[entry.user].uploads++;
 						break;
 				}
+
+				rows++;
 			}
 		});
 
 		var res = JSON.stringify(stats);
 		fs.writeFileSync(FILE, res);
 
-		console.log('> Stats for ' + host + ' saved');
+		console.log('> Stats for ' + host + ' saved (' + rows + ' rows analyzed)');
 		console.log(res);
 	});
 });
