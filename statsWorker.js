@@ -1,4 +1,4 @@
-#!/usr/bin/env nodejs
+#!/usr/bin/env node
 /**
  * Generate metrics for WikiaDay dashboard (run this one from cron)
  */
