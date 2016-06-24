@@ -3,17 +3,17 @@
  * Generate metrics for WikiaDay dashboard (run this one from cron)
  */
 var hosts = [
-	'bg.poznan.wikia.com',
-	'exitgames.wikia.com',
-	'fender.wikia.com',
-	'gryplanszowe.wikia.com',
+//	'bg.poznan.wikia.com',
+//	'exitgames.wikia.com',
+//	'fender.wikia.com',
+//	'gryplanszowe.wikia.com',
 	'kocham-poznan.wikia.com',
-	'kongregate.wikia.com',
-	'leagueoflegends.wikia.com',
+//	'kongregate.wikia.com',
+//	'leagueoflegends.wikia.com',
 	'nordycka.wikia.com',
-	'python.wikia.com',
-	'pl.cubase.wikia.com',
-	'pl.memory-alpha.org',
+//	'python.wikia.com',
+//	'pl.cubase.wikia.com',
+//	'pl.memory-alpha.org',
 	'poznan.wikia.com',
 ],
 users = [
@@ -71,7 +71,7 @@ users = [
 	"Warkot",
 ];
 
-var DAY = '2014-10-31';
+var DAY = '2016-06-23';
 
 // CONFIG ENDS HERE
 
@@ -101,7 +101,7 @@ hosts.forEach(function(host) {
 
 	console.log('> Generating stats for ' + host);
 
-	client.getRecentChanges(false, function(data, next) {
+	client.getRecentChanges(false, function(err, data, next) {
 		var rows = 0;
 
 		data.forEach(function(entry) {
