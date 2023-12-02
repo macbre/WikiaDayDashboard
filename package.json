@@ -18,6 +18,6 @@
   "homepage": "https://github.com/macbre/WikiaDayDashboard",
   "dependencies": {
     "csv-string": "^2.3.0",
-    "nodemw": "^0.10.1"
+    "nodemw": "^0.11.0"
   }
 }
